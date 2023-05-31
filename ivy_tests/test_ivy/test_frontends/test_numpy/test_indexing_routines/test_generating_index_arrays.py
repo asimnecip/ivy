@@ -83,6 +83,32 @@ def test_numpy_unravel_index(
         shape=shape,
     )
 
+@handle_frontend_test(
+    fn_tree="numpy.ravel_multi_index",
+    dtype_x_shape=max_value_as_shape_prod(),
+    test_with_out=st.just(False),
+)
+def test_numpy_ravel_multi_index(
+    *,
+    dtype_x_shape,
+    test_flags,
+    frontend,
+    fn_tree,
+    on_device,
+):
+    dtype_and_x, shape = dtype_x_shape
+    input_dtype, x = dtype_and_x[0], dtype_and_x[1]
+    helpers.test_frontend_function(
+        input_dtypes=input_dtype,
+        test_flags=test_flags,
+        frontend=frontend,
+        fn_tree=fn_tree,
+        on_device=on_device,
+        indices=x[0],
+        shape=shape,
+    )
+
+
 
 @handle_frontend_test(
     fn_tree="numpy.diag_indices",

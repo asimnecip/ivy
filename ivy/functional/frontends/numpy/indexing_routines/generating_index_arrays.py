@@ -15,6 +15,10 @@ def unravel_index(indices, shape, order="C"):
     ret = [x.astype("int64") for x in ivy.unravel_index(indices, shape)]
     return tuple(ret)
 
+@to_ivy_arrays_and_back
+def ravel_multi_index(indices, shape, order="C"):
+    ret = [x.astype("int64") for x in ivy.ravel_multi_indexes(indices, shape)]
+    return tuple(ret)
 
 @to_ivy_arrays_and_back
 def diag_indices(n, ndim=2):
