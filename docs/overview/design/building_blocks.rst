@@ -207,6 +207,7 @@ The contents of this function are as follows:
 
    # ivy/backend_handler.py
     def current_backend(*args, **kwargs):
+        print('AHOYa')
         global implicit_backend
         # if a global backend has been set with set_backend then this will be returned
         if backend_stack:
